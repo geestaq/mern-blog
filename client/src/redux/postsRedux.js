@@ -14,15 +14,13 @@ export const loadPosts = payload => ({ payload, type: LOAD_POSTS });
 
 /* THUNKS */
 export const loadPostsRequest = () => {
-  return dispatch => {
-
-    axios.get(`${API_URL}/posts`).then(res => {
+  return async dispatch => {
+    try {
+      let res = await axios.get(`${API_URL}/posts`);
       dispatch(loadPosts(res.data));
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-
+    } catch(e) {
+      console.log(e.message);
+    }
   };
 };
 
