@@ -3,8 +3,11 @@ import React from 'react';
 class PostsCounter extends React.Component {
 
   render() {
+    const { postsCounter } = this.props;
+    const postsCounterText = postsCounter > 0 ? `Posts amount: ${postsCounter}` : '- No posts -';
+
     return (
-      <div>Posts counter</div>
+      <div>{postsCounterText}</div>
     );
   }
 

@@ -3,6 +3,7 @@ import { API_URL } from '../config';
 
 /* SELECTORS */
 export const getPosts = ({ posts }) => posts;
+export const getPostsCounter = ({ posts }) => posts.length;
 
 // action name creator
 const reducerName = 'posts';
@@ -25,11 +26,9 @@ export const loadPostsRequest = () => {
 };
 
 /* INITIAL STATE */
-
 const initialState = [];
 
 /* REDUCER */
-
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
     case LOAD_POSTS:
