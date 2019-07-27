@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-
 import PostSummary from '../PostSummary/PostSummary';
 
 const PostsList = ({ posts }) => (
