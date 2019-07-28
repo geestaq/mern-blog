@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const config = require('./config');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const loadTestData = require('./testData');
 // import routes
 const postRoutes = require('./routes/post.routes');
@@ -9,6 +10,7 @@ const postRoutes = require('./routes/post.routes');
 const app = express();
 
 //middleware
+app.use(helmet());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
