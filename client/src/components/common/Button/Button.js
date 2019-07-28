@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import './Button.scss';
 
 const Button = ({ variant = '', children, ...otherProps }) => (
-  <button { ...otherProps } className={ `button button--${variant}`}>
+  <Link { ...otherProps } className={ `button button--${variant}`}>
     { children }
-  </button>
+  </Link>
 );
 
 Button.propTypes = {
