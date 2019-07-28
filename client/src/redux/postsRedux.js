@@ -11,10 +11,12 @@ const reducerName = 'posts';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* ACTIONS */
+export const CLEAR_POSTS = createActionName('CLEAR_POSTS');
 export const LOAD_POSTS = createActionName('LOAD_POSTS');
 export const START_REQUEST = createActionName('START_REQUEST');
 export const END_REQUEST = createActionName('END_REQUEST');
 export const ERROR_REQUEST = createActionName('ERROR_REQUEST');
+export const clearPosts = () => ({ type: CLEAR_POSTS });
 export const loadPosts = payload => ({ payload, type: LOAD_POSTS });
 export const startRequest = () => ({ type: START_REQUEST });
 export const endRequest = () => ({ type: END_REQUEST });
@@ -23,6 +25,7 @@ export const errorRequest = error => ({ error, type: ERROR_REQUEST });
 /* THUNKS */
 export const loadPostsRequest = () => {
   return async dispatch => {
+    dispatch(clearPosts());
     dispatch(startRequest());
     try {
       let res = await axios.get(`${API_URL}/posts`);
@@ -48,6 +51,8 @@ const initialState = {
 /* REDUCER */
 export default function reducer(statePart = initialState, action = {}) {
   switch (action.type) {
+    case CLEAR_POSTS:
+      return { ...statePart, data: [] };
     case LOAD_POSTS:
       return { ...statePart, data: action.payload };
     case START_REQUEST:
