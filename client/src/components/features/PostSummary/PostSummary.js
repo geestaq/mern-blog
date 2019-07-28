@@ -5,10 +5,22 @@ import SmallTitle from '../../common/SmallTitle/SmallTitle';
 import HtmlBox from '../../common/HtmlBox/HtmlBox';
 import './PostSummary.scss';
 
+//funkcja ograniczajaca dlugosc tesktu posta
+//jezeli obciecie nastepuje w srodku slowa to cale slowo jest pomijane
+//param: content - tresc posta
+//param: maxLength - ilosc znakow, do ktorej post bedzie obciety
+const cutText = (content, maxLength) => {
+  if(maxLength < 1) return 'Error';
+  if(content.length > maxLength)
+    content = content.substr(0, content.lastIndexOf(" ", maxLength)) + '...';
+
+  return content;
+};
+
 const PostSummary = ({ id, title, content }) => (
   <article className="post-summary">
     <SmallTitle>{title}</SmallTitle>
-    <HtmlBox>{content}</HtmlBox>
+    <HtmlBox>{cutText(content, 250)}</HtmlBox>
     <Button variant="primary">
       Read more
     </Button>
