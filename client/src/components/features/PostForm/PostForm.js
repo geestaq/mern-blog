@@ -39,6 +39,11 @@ class PostForm extends React.Component {
     addPost(post);
   }
 
+  componentDidMount() {
+    const { resetRequest } = this.props;
+    resetRequest();
+  }
+
   render() {
 
     const { post } = this.state;

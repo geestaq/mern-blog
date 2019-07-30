@@ -9,7 +9,8 @@ import Alert from '../../common/Alert/Alert';
 class SinglePost extends React.Component {
 
   componentDidMount() {
-    const { loadSinglePost, match } = this.props;
+    const { loadSinglePost, resetRequest, match } = this.props;
+    resetRequest();
     loadSinglePost(match.params.id);
   }
 
@@ -20,7 +21,7 @@ class SinglePost extends React.Component {
     if(!request.pending && request.success && singlePost !== null)
       content = <article id={`post-${singlePost.id}`}>
         <PageTitle>{singlePost.title}</PageTitle>
-        <p>Author: {singlePost.author}</p>
+        <div>Author: {singlePost.author}</div>
         <HtmlBox>{singlePost.content}</HtmlBox>
       </article>;
     if(request.pending || request.success === null)
