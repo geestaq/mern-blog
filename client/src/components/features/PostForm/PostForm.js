@@ -12,12 +12,15 @@ import 'medium-editor/dist/css/themes/default.css';
 import './PostForm.scss';
 
 class PostForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    post: {
-      title: '',
-      author: '',
-      content: ''
+    this.state = {
+      post: {
+        title: '',
+        author: '',
+        content: ''
+      }
     }
   }
 
