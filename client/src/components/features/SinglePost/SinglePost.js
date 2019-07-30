@@ -20,6 +20,7 @@ class SinglePost extends React.Component {
     if(!request.pending && request.success && singlePost !== null)
       content = <article id={`post-${singlePost.id}`}>
         <PageTitle>{singlePost.title}</PageTitle>
+        <p>Author: {singlePost.author}</p>
         <HtmlBox>{singlePost.content}</HtmlBox>
       </article>;
     if(request.pending || request.success === null)
@@ -43,6 +44,7 @@ SinglePost.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
   }),
   loadSinglePost: PropTypes.func.isRequired,
 };

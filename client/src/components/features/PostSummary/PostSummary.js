@@ -17,9 +17,10 @@ const cutText = (content, maxLength) => {
   return content;
 };
 
-const PostSummary = ({ id, title, content }) => (
+const PostSummary = ({ id, author, title, content }) => (
   <article className="post-summary">
     <SmallTitle>{title}</SmallTitle>
+    <p>Author: {author}</p>
     <HtmlBox>{cutText(content, 250)}</HtmlBox>
     <Button variant="primary" to={`/post/${id}`}>
       Read more
@@ -31,6 +32,7 @@ PostSummary.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.string,
+  author: PropTypes.string,
 };
 
 export default PostSummary;
