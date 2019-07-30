@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Button from '../../common/Button/Button';
 import SmallTitle from '../../common/SmallTitle/SmallTitle';
 import HtmlBox from '../../common/HtmlBox/HtmlBox';
@@ -17,16 +18,17 @@ const cutText = (content, maxLength) => {
   return content;
 };
 
-const PostSummary = ({ id, author, title, content }) => (
+const PostSummary = withRouter(({ id, author, title, content, history }) => (
+
   <article className="post-summary">
     <SmallTitle>{title}</SmallTitle>
     <p>Author: {author}</p>
     <HtmlBox>{cutText(content, 250)}</HtmlBox>
-    <Button variant="primary" to={`/post/${id}`}>
+    <Button variant="primary" onClick={() => history.push(`/post/${id}`)}>
       Read more
     </Button>
   </article>
-);
+));
 
 PostSummary.propTypes = {
   id: PropTypes.string,

@@ -21,7 +21,7 @@ class SinglePost extends React.Component {
     if(!request.pending && request.success && singlePost !== null)
       content = <article id={`post-${singlePost.id}`}>
         <PageTitle>{singlePost.title}</PageTitle>
-        <div>Author: {singlePost.author}</div>
+        <p>Author: {singlePost.author}</p>
         <HtmlBox>{singlePost.content}</HtmlBox>
       </article>;
     if(request.pending || request.success === null)
