@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import './Button.scss';
 
 const Button = ({ variant = '', children, ...otherProps }) => (
-  <Link { ...otherProps } className={ `button button--${variant}`}>
+  <button { ...otherProps } className={ `button button--${variant}`}>
     { children }
-  </Link>
+  </button>
 );
 
 Button.propTypes = {
