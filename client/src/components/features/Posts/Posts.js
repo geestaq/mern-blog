@@ -7,21 +7,27 @@ import Pagination from '../../common/Pagination/Pagination';
 
 class Posts extends React.Component {
 
+  loadPostsPage = (page) => {
+    const { loadPostsByPage } = this.props;
+    loadPostsByPage(page);
+  }
+
   componentDidMount() {
-    const { loadPosts, resetRequest } = this.props;
+    const { loadPostsByPage , resetRequest } = this.props;
     resetRequest();
-    loadPosts();
+    loadPostsByPage(1);
   }
 
   render() {
-    const { posts, request } = this.props;
-
+    const { posts, request, pages } = this.props;
+    const { loadPostsPage } = this;
+    
     let content = '';
     if(!request.pending && request.success && posts.length > 0)
       return (
         <div>
           <PostsList posts={posts} />
-          <Pagination pages={10} onPageChange={(page) => { console.log(page) }} />
+          <Pagination pages={pages} onPageChange={loadPostsPage} />
         </div>
       );
     if(request.pending || request.success === null)
@@ -43,7 +49,8 @@ Posts.propTypes = {
       author: PropTypes.string.isRequired,
     })
   ),
-  loadPosts: PropTypes.func.isRequired,
+  pages: PropTypes.number.isRequired,
+  loadPostsByPage: PropTypes.func.isRequired,
 };
 
 export default Posts;
