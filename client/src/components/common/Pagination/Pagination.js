@@ -7,7 +7,7 @@ class Pagination extends React.Component {
     super(props);
 
     this.state = {
-      presentPage: this.props.initialPage || 1
+      presentPage: props.initialPage || 1
     };
   }
 

@@ -21,8 +21,7 @@ class Posts extends React.Component {
   render() {
     const { posts, request, pages } = this.props;
     const { loadPostsPage } = this;
-    
-    let content = '';
+
     if(!request.pending && request.success && posts.length > 0)
       return (
         <div>
@@ -31,7 +30,12 @@ class Posts extends React.Component {
         </div>
       );
     if(request.pending || request.success === null)
-      return <Spinner/>;
+      return (
+        <div>
+          <Spinner/>
+          <Pagination pages={pages} onPageChange={loadPostsPage} />
+        </div>
+      );
     if(!request.pending && request.error !== null)
       return <Alert variant="error">{request.error}</Alert>;
     if(!request.pending && request.success && posts.length === 0)
