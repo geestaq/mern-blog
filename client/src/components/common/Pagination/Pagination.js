@@ -23,17 +23,36 @@ class Pagination extends React.Component {
     const { presentPage } = this.state;
     const { changePage } = this;
 
+    let prevLink = '';
+    if(presentPage > 1) {
+      prevLink = <li
+        key="0"
+        onClick={() => { changePage(presentPage-1) }}
+        className="pagination__list__item">&lt;</li>;
+    }
+
+    let nextLink = '';
+    if(presentPage < pages) {
+      nextLink = <li
+        key={pages}
+        onClick={() => { changePage(presentPage+1) }}
+        className="pagination__list__item">&gt;</li>;
+    }
+//console.log(presentPage);
+
     return (
       <div className="pagination">
         <ul className="pagination__list">
+          {prevLink}
           {[...Array(pages)].map((el, page) =>
-          <li
-              key={++page}
-              onClick={() => { changePage(page) }}
-              className={`pagination__list__item${((page) === presentPage) ? ' pagination__list__item--active' : ''}`}>
-              {page}
-          </li>
+            <li
+                key={++page}
+                onClick={() => { changePage(page) }}
+                className={`pagination__list__item${((page) === presentPage) ? ' pagination__list__item--active' : ''}`}>
+                {page}
+            </li>
           )}
+          {nextLink}
         </ul>
       </div>
     );

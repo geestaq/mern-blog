@@ -5,7 +5,7 @@ import Posts from './Posts';
 const mapStateToProps = state => ({
   posts: getPosts(state),
   request: getRequest(state),
-  pages: getPages(state)
+  pages: getPages(state),
 })
 
 const mapDispatchToProps = dispatch => ({
