@@ -4,6 +4,7 @@ import { API_URL } from '../config';
 /* SELECTORS */
 export const getPosts = ({ posts }) => posts.data;
 export const getPostsCounter = ({ posts }) => posts.amount;
+export const getPostsPerPage = ({ posts }) => posts.postsPerPage;
 export const getRequest = ({ posts }) => posts.request;
 export const getSinglePost = ({ posts }) => posts.singlePost;
 export const getPages = ({ posts }) => Math.ceil(posts.amount / posts.postsPerPage);
@@ -73,13 +74,11 @@ export const addPostRequest = (post) => {
   };
 };
 
-export const loadPostsByPageRequest = (page) => {
+export const loadPostsByPageRequest = (page, postsPerPage) => {
   return async dispatch => {
 
     dispatch(startRequest());
     try {
-
-      const postsPerPage = 1;
 
       const startAt = (page - 1) * postsPerPage;
       const limit = postsPerPage;

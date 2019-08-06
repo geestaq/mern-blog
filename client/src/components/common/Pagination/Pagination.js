@@ -12,10 +12,10 @@ class Pagination extends React.Component {
   }
 
   changePage = (newPage) => {
-    const { onPageChange } = this.props;
+    const { onPageChange, perPage } = this.props;
 
     this.setState({ presentPage: newPage });
-    onPageChange(newPage);
+    onPageChange(newPage, perPage);
   }
 
   render() {
@@ -38,7 +38,6 @@ class Pagination extends React.Component {
         onClick={() => { changePage(presentPage+1) }}
         className="pagination__list__item">&gt;</li>;
     }
-//console.log(presentPage);
 
     return (
       <div className="pagination">
@@ -63,6 +62,7 @@ Pagination.propTypes = {
   pages: PropTypes.number.isRequired,
   initialPage: PropTypes.number,
   onPageChange: PropTypes.func.isRequired,
+  perPage: PropTypes.number
 };
 
 export default Pagination;
