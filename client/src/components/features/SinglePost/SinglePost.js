@@ -4,7 +4,7 @@ import PageTitle from '../../common/PageTitle/PageTitle';
 import HtmlBox from '../../common/HtmlBox/HtmlBox';
 import Spinner from '../../common/Spinner/Spinner';
 import Alert from '../../common/Alert/Alert';
-//import './PostSummary.scss';
+import { FacebookProvider, Comments } from 'react-facebook';
 
 class SinglePost extends React.Component {
 
@@ -15,7 +15,7 @@ class SinglePost extends React.Component {
   }
 
   render() {
-    const { singlePost, request } = this.props;
+    const { singlePost, request, location } = this.props;
 
     let content = '';
     if(!request.pending && request.success && singlePost !== null)
@@ -23,6 +23,9 @@ class SinglePost extends React.Component {
         <PageTitle>{singlePost.title}</PageTitle>
         <p>Author: {singlePost.author}</p>
         <HtmlBox>{singlePost.content}</HtmlBox>
+        <FacebookProvider appId="409929669632532">
+          <Comments href={`http://localhost:3000${location.pathname}`} />
+        </FacebookProvider>
       </article>;
     if(request.pending || request.success === null)
       content = <Spinner/>;
