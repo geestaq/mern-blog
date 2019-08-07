@@ -5,6 +5,7 @@ import HtmlBox from '../../common/HtmlBox/HtmlBox';
 import Spinner from '../../common/Spinner/Spinner';
 import Alert from '../../common/Alert/Alert';
 import { FacebookProvider, Comments } from 'react-facebook';
+import { BASE_URL } from '../../../config';
 
 class SinglePost extends React.Component {
 
@@ -24,7 +25,7 @@ class SinglePost extends React.Component {
         <p>Author: {singlePost.author}</p>
         <HtmlBox>{singlePost.content}</HtmlBox>
         <FacebookProvider appId="409929669632532">
-          <Comments href={`http://localhost:3000${location.pathname}`} />
+          <Comments href={`${BASE_URL}${location.pathname}`} />
         </FacebookProvider>
       </article>;
     if(request.pending || request.success === null)
