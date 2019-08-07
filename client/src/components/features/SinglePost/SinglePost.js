@@ -4,7 +4,7 @@ import PageTitle from '../../common/PageTitle/PageTitle';
 import HtmlBox from '../../common/HtmlBox/HtmlBox';
 import Spinner from '../../common/Spinner/Spinner';
 import Alert from '../../common/Alert/Alert';
-import { FacebookProvider, Comments } from 'react-facebook';
+import { FacebookProvider, Comments, Like } from 'react-facebook';
 import { BASE_URL } from '../../../config';
 
 class SinglePost extends React.Component {
@@ -22,6 +22,9 @@ class SinglePost extends React.Component {
     if(!request.pending && request.success && singlePost !== null)
       content = <article id={`post-${singlePost.id}`}>
         <PageTitle>{singlePost.title}</PageTitle>
+        <FacebookProvider appId="409929669632532">
+          <Like href={`${BASE_URL}${location.pathname}`} colorScheme="dark" showFaces share />
+        </FacebookProvider>
         <p>Author: {singlePost.author}</p>
         <HtmlBox>{singlePost.content}</HtmlBox>
         <FacebookProvider appId="409929669632532">
