@@ -6,6 +6,8 @@ const PostController = require('../controllers/post.controller');
 // get all posts
 router.route('/posts').get(PostController.getPosts);
 // get single post
+router.route('/post/random').get(PostController.getRandomPost);
+// get single post
 router.route('/post/:id').get(PostController.getSinglePost);
 // add posts
 router.route('/posts').post(PostController.addPost);

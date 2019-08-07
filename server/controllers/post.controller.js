@@ -23,6 +23,25 @@ exports.getSinglePost = async (req, res) => {
     }
 };
 
+// get single post
+exports.getRandomPost = async (req, res) => {
+    try {
+      const amount = await Post.countDocuments();
+      let post = null;
+
+      if(amount > 0) {
+        const startAt = Math.floor((Math.random() * (amount - 1)));
+        post = await Post.find().skip(startAt).limit(1);
+        post = post[0];
+      }
+
+      res.status(200).json(post);
+
+    } catch(err) {
+      res.status(500).json(err);
+    }
+};
+
 // add new post
 exports.addPost = async function (req, res) {
   try {
