@@ -1,2 +1,6 @@
-export const API_URL = 'http://localhost:8000/api';
-export const BASE_URL = 'http://localhost:3000';
+//export const API_URL = 'https://mern-blog-666.herokuapp.com/api';
+//export const BASE_URL = 'https://mern-blog-666.herokuapp.com/';
+
+export const API_URL = '/api';
+export const BASE_URL = 'https://mern-blog-666.herokuapp.com/';
+//export const BASE_URL = 'localhost:8000';
